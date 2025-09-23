@@ -1,0 +1,76 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "ChaloDriver – Driver On Demand",
+  "image": "https://www.chalodriver.in/img/logon.png",
+  "@id": "https://www.chalodriver.in/",
+  "url": "https://www.chalodriver.in/",
+  "telephone": "+91-7093639415",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
+  },
+  "areaServed": [
+    "Delhi",
+    "New Delhi",
+    "Gurgaon",
+    "Noida",
+    "Ghaziabad",
+    "Faridabad",
+
+    "Lucknow",
+    "Kanpur",
+    "Varanasi",
+    "Agra",
+    "Prayagraj",
+
+    "Jaipur",
+    "Jodhpur",
+    "Kota",
+    "Ajmer",
+    "Udaipur",
+
+    "Patna",
+    "Gaya",
+    "Muzaffarpur",
+    "Darbhanga",
+
+    "Ranchi",
+    "Jamshedpur",
+    "Dhanbad",
+    "Bokaro",
+
+    "Raipur",
+    "Bhilai",
+    "Bilaspur",
+
+    "Bhopal",
+    "Indore",
+    "Gwalior",
+    "Jabalpur",
+    "Ujjain",
+
+    "Mumbai",
+    "Pune",
+    "Nagpur",
+
+    "Kolkata",
+    "Howrah",
+
+    "Hyderabad",
+    "Secunderabad",
+
+    "Chennai",
+    "Coimbatore",
+
+    "Bangalore",
+    "Mysore"
+  ],
+  "description": "Hire professional car drivers in major Indian cities. Affordable hourly, daily & outstation driver booking service across metro and tier-2 cities in India.",
+  "sameAs": [
+    "https://www.facebook.com/chalodriver",
+    "https://www.instagram.com/chalodriver",
+    "https://twitter.com/chalodriver",
+    "https://www.linkedin.com/company/chalodriver"
+  ]
+}
