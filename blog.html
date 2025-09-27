@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chalo Driver Blog</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0f7fa 0%, #fffde4 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .iframe-card {
+      margin-bottom: 24px;
+      transition: transform 0.2s;
+    }
+    .iframe-card:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+    iframe {
+      width: 100%;
+      min-height: 320px;
+      border: none;
+      border-radius: 8px 8px 0 0;
+      background: #f5f5f5;
+    }
+    .card {
+      border-radius: 8px;
+      border: 1px solid #b2dfdb;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+    }
+    .card-title {
+      color: #00796b;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .btn-chalo {
+      background: linear-gradient(90deg, #00bfa5 0%, #00796b 100%);
+      color: #fff;
+      border: none;
+    }
+    .btn-chalo:hover {
+      background: linear-gradient(90deg, #00796b 0%, #00bfa5 100%);
+      color: #fff;
+    }
+    header {
+      background: linear-gradient(90deg, #00bfa5 0%, #00796b 100%);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    header .lead {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #e0f7fa;
+    }
+    #filterInput {
+      border-radius: 24px;
+      border: 1px solid #b2dfdb;
+      padding-left: 1.5rem;
+      font-size: 1.05rem;
+    }
+    footer {
+      background: #e0f7fa;
+      color: #00796b;
+      font-size: 0.98rem;
+    }
+  </style>
+
+  <style>
+    :root {
+      --brand: #0ea35d;
+      --brand-dark: #0a7a45;
+      --ink: #0f172a;
+      --muted: #64748b;
+      --bg: #f8fafc;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    .navbar {
+      box-shadow: 0 8px 24px rgba(2, 8, 20, .06);
+    }
+
+    .btn-brand {
+      background: var(--brand);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-brand:hover {
+      background: var(--brand-dark);
+      color: #fff;
+    }
+
+    .text-brand {
+      color: var(--brand) !important;
+    }
+
+    .badge-soft {
+      background: rgba(14, 163, 93, .1);
+      color: var(--brand);
+    }
+
+    .shadow-xl {
+      box-shadow: 0 20px 60px rgba(2, 8, 20, .10) !important;
+    }
+
+    /* Hero */
+    #hero {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(14, 163, 93, .12), transparent), #fff;
+    }
+
+    #hero .logo-wrap {
+      display: flex;
+      gap: .75rem;
+      align-items: center;
+    }
+
+    .display-5 {
+      letter-spacing: -.02em;
+    }
+
+    /* Cards */
+    .feature-card {
+      border: none;
+      border-radius: 1rem;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(2, 8, 20, .06);
+      transition: transform .2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Sections */
+    section {
+      padding: 72px 0;
+    }
+
+    @media (max-width: 576px) {
+      section {
+        padding: 48px 0;
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #0b1220;
+      color: #cbd5e1;
+    }
+
+    footer a {
+      color: #e2e8f0;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* Logo sizing */
+    .brand-logo {
+      width: 40px;
+      height: auto;
+      max-width: 100%;
+    }
+
+    .brand-mark {
+      width: 64px;
+      height: auto;
+      max-width: 100%;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all .6s ease-out;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+     <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-white sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#hero">
+        <img src="img/logo1.png" alt="ChaloDriver Logo" class="brand-logo me-2" loading="lazy" />
+        <strong class="fs-5">Chalo<span class="text-brand">Driver</span></strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#book">Book</a></li>
+          <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="become-driver.html">Become a Driver</a></li>
+          <li class="nav-item ms-lg-3"><a class="btn btn-brand rounded-pill px-3" href="#book">Book a Driver</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <header class="text-white text-center py-4">
+    <h1>🚗 Chalo Driver Blog</h1>
+    <p class="lead">Best Driver Resources & Web Pages Curated for You</p>
+  </header>
+
+  <main class="container my-4">
+    <div class="row mb-3">
+      <div class="col-12">
+        <input id="filterInput" type="text" class="form-control" placeholder="🔎 Search driver resources, domains, or keywords...">
+      </div>
+    </div>
+    <div id="iframeContainer" class="row"></div>
+  </main>
+
+  <footer class="text-center py-3 border-top">
+    <p class="mb-0">© 2025 Chalo Driver Blog. Some sites may not display inside the iframe due to their security settings. Use the "Open" button to view directly.</p>
+  </footer>
+
+  <script>
+    // List of driver-related URLs (example, replace/add as needed)
+    const urls = [
+      "https://sidneyuoee699440.pointblog.net/looking-for-a-professional-driver-in-india-84815597",
+"https://safaorfs297486.blogdigy.com/need-a-professional-driver-in-india-57818302",
+"https://deweykcew207358.blog5.net/84587327/need-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66421560/looking-for-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50304771/require-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44733428/looking-for-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42460108/need-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/43990677/need-a-professional-driver-in-india",
+"https://sidneyuoee699440.pointblog.net/looking-for-a-professional-driver-in-india-84817408",
+"https://safaorfs297486.blogdigy.com/require-a-professional-driver-in-india-57820074",
+"https://deweykcew207358.blog5.net/84589086/need-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66423328/require-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50306623/looking-for-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44735134/require-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42461762/require-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/43992459/require-a-professional-driver-in-india",
+"https://sidneyuoee699440.pointblog.net/looking-for-a-professional-driver-in-india-84819263",
+"https://safaorfs297486.blogdigy.com/require-a-professional-driver-in-india-57821872",
+"https://deweykcew207358.blog5.net/84590876/looking-for-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66425123/require-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50308421/looking-for-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44736887/need-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42463476/require-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/43994256/require-a-professional-driver-in-india",
+"https://sidneyuoee699440.pointblog.net/require-a-professional-driver-in-india-84821146",
+"https://safaorfs297486.blogdigy.com/looking-for-a-professional-driver-in-india-57823668",
+"https://deweykcew207358.blog5.net/84592651/need-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66426907/looking-for-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50310239/need-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44738719/need-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42465239/looking-for-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/43996079/looking-for-a-professional-driver-in-india",
+"https://sidneyuoee699440.pointblog.net/need-a-professional-driver-in-india-84823054",
+"https://safaorfs297486.blogdigy.com/need-a-professional-driver-in-india-57825516",
+"https://deweykcew207358.blog5.net/84594471/require-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66428753/looking-for-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50312068/looking-for-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44740498/need-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42466935/looking-for-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/43997868/looking-for-a-professional-driver-in-india",
+"https://sidneyuoee699440.pointblog.net/looking-for-a-professional-driver-in-india-84824968",
+"https://safaorfs297486.blogdigy.com/need-a-professional-driver-in-india-57827290",
+"https://deweykcew207358.blog5.net/84596223/looking-for-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66430534/require-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50313825/looking-for-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44742185/looking-for-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42468537/require-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/43999605/need-a-professional-driver-in-india",
+"https://sidneyuoee699440.pointblog.net/require-a-professional-driver-in-india-84826849",
+"https://safaorfs297486.blogdigy.com/need-a-professional-driver-in-india-57829126",
+"https://deweykcew207358.blog5.net/84598047/looking-for-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66432383/need-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50315692/looking-for-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44743940/require-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42470236/require-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/44001415/require-a-professional-driver-in-india",
+"https://sidneyuoee699440.pointblog.net/need-a-professional-driver-in-india-84828653",
+"https://safaorfs297486.blogdigy.com/require-a-professional-driver-in-india-57830877",
+"https://deweykcew207358.blog5.net/84599778/need-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66434138/looking-for-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50317509/need-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44745716/require-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42471897/looking-for-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/44003172/looking-for-a-professional-driver-in-india",
+"https://sidneyuoee699440.pointblog.net/looking-for-a-professional-driver-in-india-84830327",
+"https://safaorfs297486.blogdigy.com/need-a-professional-driver-in-india-57832533",
+"https://deweykcew207358.blog5.net/84601406/looking-for-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66435773/looking-for-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50319192/need-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44747379/looking-for-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42473489/looking-for-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/44004896/looking-for-a-professional-driver-in-india",
+"https://sidneyuoee699440.pointblog.net/need-a-professional-driver-in-india-84832032",
+"https://safaorfs297486.blogdigy.com/require-a-professional-driver-in-india-57834196",
+"https://deweykcew207358.blog5.net/84603040/looking-for-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66437419/require-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50320976/require-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44749003/require-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42475054/need-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/44006630/require-a-professional-driver-in-india",
+"https://sidneyuoee699440.pointblog.net/need-a-professional-driver-in-india-84833776",
+"https://safaorfs297486.blogdigy.com/looking-for-a-professional-driver-in-india-57835848",
+"https://deweykcew207358.blog5.net/84604698/need-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66439068/looking-for-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50322792/looking-for-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44750675/need-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42476661/looking-for-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/44008386/require-a-professional-driver-in-india",
+"https://sidneyuoee699440.pointblog.net/require-a-professional-driver-in-india-84835529",
+"https://safaorfs297486.blogdigy.com/require-a-professional-driver-in-india-57837521",
+"https://deweykcew207358.blog5.net/84606358/require-a-professional-driver-in-india",
+"https://lawsonzsue376385.mpeblog.com/66440728/need-a-professional-driver-in-india",
+"https://estellexzje184637.blog-gold.com/50324586/looking-for-a-professional-driver-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44752343/require-a-professional-driver-in-india",
+"https://delilahmfvu671741.blognody.com/42478257/require-a-professional-driver-in-india",
+"https://aliviamxdl735292.activoblog.com/44010119/need-a-professional-driver-in-india",
+"https://mediajx.com/story25021526/looking-for-a-professional-driver-in-india",
+"https://bookmark-dofollow.com/story25346923/looking-for-a-professional-driver-in-india",
+"https://bookmark-template.com/story25637813/looking-for-a-professional-driver-in-india",
+"https://prbookmarkingwebsites.com/story25476915/need-a-professional-driver-in-india",
+"https://socialmediainuk.com/story23811440/require-a-professional-driver-in-india",
+"https://dirstop.com/story25399995/looking-for-a-professional-driver-in-india",
+"https://opensocialfactory.com/story22862783/need-a-professional-driver-in-india",
+"https://ztndz.com/story25408882/need-a-professional-driver-in-india",
+"https://gorillasocialwork.com/story23967802/need-a-professional-driver-in-india",
+"https://socialrus.com/story21747787/need-a-professional-driver-in-india",
+"https://bookmarklinking.com/story8278102/need-a-professional-driver-in-india",
+"https://bookmarks-hit.com/story22809060/require-a-professional-driver-in-india",
+"https://mediajx.com/story25022889/require-a-professional-driver-in-india",
+"https://bookmark-dofollow.com/story25348345/require-a-professional-driver-in-india",
+"https://bookmark-template.com/story25639221/require-a-professional-driver-in-india",
+"https://prbookmarkingwebsites.com/story25478369/need-a-professional-driver-in-india",
+"https://socialmediainuk.com/story23812868/require-a-professional-driver-in-india",
+"https://dirstop.com/story25401353/need-a-professional-driver-in-india",
+"https://opensocialfactory.com/story22864188/require-a-professional-driver-in-india",
+"https://ztndz.com/story25410295/need-a-professional-driver-in-india",
+"https://gorillasocialwork.com/story23969204/need-a-professional-driver-in-india",
+"https://socialrus.com/story21749156/need-a-professional-driver-in-india",
+"https://bookmarklinking.com/story8279379/need-a-professional-driver-in-india",
+"https://bookmarks-hit.com/story22810308/looking-for-a-professional-driver-in-india",
+"https://mediajx.com/story25023658/looking-for-a-professional-driver-in-india",
+"https://bookmark-dofollow.com/story25349106/require-a-professional-driver-in-india",
+"https://bookmark-template.com/story25640055/looking-for-a-professional-driver-in-india",
+"https://prbookmarkingwebsites.com/story25479173/need-a-professional-driver-in-india",
+"https://socialmediainuk.com/story23813655/looking-for-a-professional-driver-in-india",
+"https://dirstop.com/story25402080/require-a-professional-driver-in-india",
+"https://opensocialfactory.com/story22864971/need-a-professional-driver-in-india",
+"https://ztndz.com/story25411106/need-a-professional-driver-in-india",
+"https://gorillasocialwork.com/story23969993/require-a-professional-driver-in-india",
+"https://socialrus.com/story21749913/need-a-professional-driver-in-india",
+"https://bookmarklinking.com/story8280082/require-a-professional-driver-in-india",
+"https://bookmarks-hit.com/story22811001/require-a-professional-driver-in-india",
+
+    "https://sidneyuoee699440.pointblog.net/locate-reliable-drivers-in-india-84846999",
+"https://safaorfs297486.blogdigy.com/discover-reliable-drivers-in-india-57848157",
+"https://deweykcew207358.blog5.net/84617127/discover-reliable-drivers-in-india",
+"https://lawsonzsue376385.mpeblog.com/66451422/find-reliable-drivers-in-india",
+"https://estellexzje184637.blog-gold.com/50335741/discover-reliable-drivers-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44762712/discover-reliable-drivers-in-india",
+"https://delilahmfvu671741.blognody.com/42488280/discover-reliable-drivers-in-india",
+"https://aliviamxdl735292.activoblog.com/44021028/discover-reliable-drivers-in-india",
+"https://mediajx.com/story25026012/locate-reliable-drivers-in-india",
+"https://bookmark-dofollow.com/story25351473/discover-reliable-drivers-in-india",
+"https://bookmark-template.com/story25642499/find-reliable-drivers-in-india",
+"https://prbookmarkingwebsites.com/story25481534/find-reliable-drivers-in-india",
+"https://socialmediainuk.com/story23816114/discover-reliable-drivers-in-india",
+"https://dirstop.com/story25404408/locate-reliable-drivers-in-india",
+"https://opensocialfactory.com/story22867339/locate-reliable-drivers-in-india",
+"https://ztndz.com/story25413459/find-reliable-drivers-in-india",
+"https://gorillasocialwork.com/story23972404/find-reliable-drivers-in-india",
+"https://socialrus.com/story21752254/discover-reliable-drivers-in-india",
+"https://bookmarklinking.com/story8282245/locate-reliable-drivers-in-india",
+"https://bookmarks-hit.com/story22813100/locate-reliable-drivers-in-india",
+"https://mediajx.com/story25026668/find-reliable-drivers-in-india",
+"https://bookmark-dofollow.com/story25352117/find-reliable-drivers-in-india",
+"https://bookmark-template.com/story25643173/discover-reliable-drivers-in-india",
+"https://prbookmarkingwebsites.com/story25482202/find-reliable-drivers-in-india",
+"https://socialmediainuk.com/story23816802/discover-reliable-drivers-in-india",
+"https://dirstop.com/story25405040/find-reliable-drivers-in-india",
+"https://opensocialfactory.com/story22868009/find-reliable-drivers-in-india",
+"https://ztndz.com/story25414110/find-reliable-drivers-in-india",
+"https://gorillasocialwork.com/story23973065/locate-reliable-drivers-in-india",
+"https://socialrus.com/story21752896/discover-reliable-drivers-in-india",
+"https://bookmarklinking.com/story8282844/locate-reliable-drivers-in-india",
+"https://bookmarks-hit.com/story22813660/find-reliable-drivers-in-india",
+"https://sidneyuoee699440.pointblog.net/discover-reliable-drivers-in-india-84852835",
+"https://safaorfs297486.blogdigy.com/find-reliable-drivers-in-india-57853828",
+"https://deweykcew207358.blog5.net/84622713/find-reliable-drivers-in-india",
+"https://lawsonzsue376385.mpeblog.com/66457029/discover-reliable-drivers-in-india",
+"https://estellexzje184637.blog-gold.com/50341612/locate-reliable-drivers-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44768168/discover-reliable-drivers-in-india",
+"https://delilahmfvu671741.blognody.com/42493598/find-reliable-drivers-in-india",
+"https://aliviamxdl735292.activoblog.com/44026685/locate-reliable-drivers-in-india",
+"https://rajanollj263026.wikipublicity.com/7390976/find_reliable_drivers_in_india",
+"https://nelsonzexu945051.wikiannouncement.com/9122450/locate_reliable_drivers_in_india",
+"https://kiaragzxd277181.wikicommunications.com/6359181/discover_reliable_drivers_in_india",
+"https://elladoow394599.wikicorrespondence.com/5567025/locate_reliable_drivers_in_india",
+"https://dillansitg989562.wikiexpression.com/5287367/locate_reliable_drivers_in_india",
+"https://sabrinabdmf661025.wikiannouncing.com/7110534/find_reliable_drivers_in_india",
+"https://tasneemfchd527043.wikipresses.com/6257409/locate_reliable_drivers_in_india",
+"https://aliviaivvx181857.wikitelevisions.com/8315018/find_reliable_drivers_in_india",
+"https://robertogmg458224.wikiinside.com/2748134/find_reliable_drivers_in_india",
+"https://liviastpd726090.wikimidpoint.com/5987274/find_reliable_drivers_in_india",
+"https://donnamylh952503.wikipublicity.com/user",
+"https://janatdoe630188.wikiannouncement.com/user",
+"https://katrinauyhh887721.wikicommunications.com/user",
+"https://lorizxqs463836.wikicorrespondence.com/user",
+"https://mariyahslam458664.wikiexpression.com/user",
+"https://jakubgehc531421.wikiannouncing.com/user",
+"https://jessegrqi799493.blog-gold.com/profile",
+"https://elijahvijt811824.aboutyoublog.com/profile",
+"https://rebeccatots883257.blognody.com/profile",
+"https://miriamadnn860742.activoblog.com/profile",
+"https://mediajx.com/story25029153/discover-reliable-drivers-in-india",
+"https://bookmark-dofollow.com/story25354592/locate-reliable-drivers-in-india",
+"https://bookmark-template.com/story25645673/locate-reliable-drivers-in-india",
+"https://prbookmarkingwebsites.com/story25484688/locate-reliable-drivers-in-india",
+"https://socialmediainuk.com/story23819342/discover-reliable-drivers-in-india",
+"https://dirstop.com/story25407516/discover-reliable-drivers-in-india",
+"https://opensocialfactory.com/story22870496/locate-reliable-drivers-in-india",
+"https://ztndz.com/story25416585/locate-reliable-drivers-in-india",
+"https://gorillasocialwork.com/story23975586/discover-reliable-drivers-in-india",
+"https://socialrus.com/story21755389/discover-reliable-drivers-in-india",
+"https://bookmarklinking.com/story8285197/discover-reliable-drivers-in-india",
+"https://bookmarks-hit.com/story22815909/discover-reliable-drivers-in-india",
+"https://sidneyuoee699440.pointblog.net/locate-reliable-drivers-in-india-84860576",
+"https://safaorfs297486.blogdigy.com/locate-reliable-drivers-in-india-57861399",
+"https://deweykcew207358.blog5.net/84630218/discover-reliable-drivers-in-india",
+"https://lawsonzsue376385.mpeblog.com/66464560/discover-reliable-drivers-in-india",
+"https://estellexzje184637.blog-gold.com/50349328/discover-reliable-drivers-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44775467/locate-reliable-drivers-in-india",
+"https://delilahmfvu671741.blognody.com/42500743/find-reliable-drivers-in-india",
+"https://aliviamxdl735292.activoblog.com/44034125/find-reliable-drivers-in-india",
+"https://rajanollj263026.wikipublicity.com/7391950/find_reliable_drivers_in_india",
+"https://nelsonzexu945051.wikiannouncement.com/9123438/discover_reliable_drivers_in_india",
+"https://kiaragzxd277181.wikicommunications.com/6360138/locate_reliable_drivers_in_india",
+"https://elladoow394599.wikicorrespondence.com/5567982/locate_reliable_drivers_in_india",
+"https://dillansitg989562.wikiexpression.com/5288335/locate_reliable_drivers_in_india",
+"https://sabrinabdmf661025.wikiannouncing.com/7111505/discover_reliable_drivers_in_india",
+"https://tasneemfchd527043.wikipresses.com/6258382/locate_reliable_drivers_in_india",
+"https://aliviaivvx181857.wikitelevisions.com/8315977/find_reliable_drivers_in_india",
+"https://robertogmg458224.wikiinside.com/2749107/locate_reliable_drivers_in_india",
+"https://liviastpd726090.wikimidpoint.com/5988243/discover_reliable_drivers_in_india",
+"https://rajanollj263026.wikipublicity.com/7392144/locate_reliable_drivers_in_india",
+"https://nelsonzexu945051.wikiannouncement.com/9123628/discover_reliable_drivers_in_india",
+"https://kiaragzxd277181.wikicommunications.com/6360331/discover_reliable_drivers_in_india",
+"https://elladoow394599.wikicorrespondence.com/5568184/locate_reliable_drivers_in_india",
+"https://dillansitg989562.wikiexpression.com/5288529/locate_reliable_drivers_in_india",
+"https://sabrinabdmf661025.wikiannouncing.com/7111699/discover_reliable_drivers_in_india",
+"https://tasneemfchd527043.wikipresses.com/6258581/find_reliable_drivers_in_india",
+"https://aliviaivvx181857.wikitelevisions.com/8316174/find_reliable_drivers_in_india",
+"https://robertogmg458224.wikiinside.com/2749301/discover_reliable_drivers_in_india",
+"https://liviastpd726090.wikimidpoint.com/5988438/find_reliable_drivers_in_india",
+"https://sidneyuoee699440.pointblog.net/locate-reliable-drivers-in-india-84866133",
+"https://safaorfs297486.blogdigy.com/locate-reliable-drivers-in-india-57866813",
+"https://deweykcew207358.blog5.net/84635656/discover-reliable-drivers-in-india",
+"https://lawsonzsue376385.mpeblog.com/66469941/discover-reliable-drivers-in-india",
+"https://estellexzje184637.blog-gold.com/50354894/discover-reliable-drivers-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44780765/find-reliable-drivers-in-india",
+"https://delilahmfvu671741.blognody.com/42505951/find-reliable-drivers-in-india",
+"https://aliviamxdl735292.activoblog.com/44039555/discover-reliable-drivers-in-india",
+"https://idaaydb135222.wikipublicity.com/user",
+"https://jaysuma107212.wikiannouncement.com/user",
+"https://dawudwhcm191036.wikicommunications.com/user",
+"https://delilahowxg683179.wikicorrespondence.com/user",
+"https://aruntywx879613.wikiexpression.com/user",
+"https://stevedkye869100.wikiannouncing.com/user",
+"https://anyajdti070045.blog-gold.com/profile",
+"https://ianywnl353267.aboutyoublog.com/profile",
+"https://mayaqxht211755.blognody.com/profile",
+"https://shanianyfz274528.activoblog.com/profile",
+"https://rajanollj263026.wikipublicity.com/7392803/find_reliable_drivers_in_india",
+"https://nelsonzexu945051.wikiannouncement.com/9124295/discover_reliable_drivers_in_india",
+"https://kiaragzxd277181.wikicommunications.com/6360992/discover_reliable_drivers_in_india",
+"https://elladoow394599.wikicorrespondence.com/5568848/discover_reliable_drivers_in_india",
+"https://dillansitg989562.wikiexpression.com/5289196/locate_reliable_drivers_in_india",
+"https://sabrinabdmf661025.wikiannouncing.com/7112368/locate_reliable_drivers_in_india",
+"https://tasneemfchd527043.wikipresses.com/6259242/locate_reliable_drivers_in_india",
+"https://aliviaivvx181857.wikitelevisions.com/8316839/discover_reliable_drivers_in_india",
+"https://robertogmg458224.wikiinside.com/2749966/find_reliable_drivers_in_india",
+"https://liviastpd726090.wikimidpoint.com/5989100/discover_reliable_drivers_in_india",
+"https://cyrusvmhg171573.wikipublicity.com/user",
+"https://theresaeyri913418.wikiannouncement.com/user",
+"https://adrianahoab298586.wikicommunications.com/user",
+"https://alyssacuuf057722.wikicorrespondence.com/user",
+"https://haleemarzyr367339.wikiexpression.com/user",
+"https://iandbod331669.wikiannouncing.com/user",
+"https://deweybnxa678567.blog-gold.com/profile",
+"https://aronvvao755917.aboutyoublog.com/profile",
+"https://asiyabolh415763.blognody.com/profile",
+"https://sidneypgul897692.activoblog.com/profile",
+"https://sidneyuoee699440.pointblog.net/locate-reliable-drivers-in-india-84873069",
+"https://safaorfs297486.blogdigy.com/discover-reliable-drivers-in-india-57873447",
+"https://deweykcew207358.blog5.net/84642303/find-reliable-drivers-in-india",
+"https://lawsonzsue376385.mpeblog.com/66476523/locate-reliable-drivers-in-india",
+"https://estellexzje184637.blog-gold.com/50361598/find-reliable-drivers-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44787378/find-reliable-drivers-in-india",
+"https://delilahmfvu671741.blognody.com/42512459/discover-reliable-drivers-in-india",
+"https://aliviamxdl735292.activoblog.com/44046277/locate-reliable-drivers-in-india",
+"https://sidneyuoee699440.pointblog.net/locate-reliable-drivers-in-india-84874775",
+"https://safaorfs297486.blogdigy.com/find-reliable-drivers-in-india-57875063",
+"https://deweykcew207358.blog5.net/84643930/locate-reliable-drivers-in-india",
+"https://lawsonzsue376385.mpeblog.com/66478123/discover-reliable-drivers-in-india",
+"https://estellexzje184637.blog-gold.com/50363297/find-reliable-drivers-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44789023/locate-reliable-drivers-in-india",
+"https://delilahmfvu671741.blognody.com/42514061/discover-reliable-drivers-in-india",
+"https://aliviamxdl735292.activoblog.com/44047945/discover-reliable-drivers-in-india",
+"https://sidneyuoee699440.pointblog.net/discover-reliable-drivers-in-india-84876421",
+"https://safaorfs297486.blogdigy.com/find-reliable-drivers-in-india-57876647",
+"https://deweykcew207358.blog5.net/84645498/discover-reliable-drivers-in-india",
+"https://lawsonzsue376385.mpeblog.com/66479692/locate-reliable-drivers-in-india",
+"https://estellexzje184637.blog-gold.com/50364887/discover-reliable-drivers-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44790573/locate-reliable-drivers-in-india",
+"https://delilahmfvu671741.blognody.com/42515564/discover-reliable-drivers-in-india",
+"https://aliviamxdl735292.activoblog.com/44049515/locate-reliable-drivers-in-india",
+"https://sidneyuoee699440.pointblog.net/discover-reliable-drivers-in-india-84878110",
+"https://safaorfs297486.blogdigy.com/find-reliable-drivers-in-india-57878239",
+"https://deweykcew207358.blog5.net/84647101/find-reliable-drivers-in-india",
+"https://lawsonzsue376385.mpeblog.com/66481270/discover-reliable-drivers-in-india",
+"https://estellexzje184637.blog-gold.com/50366497/find-reliable-drivers-in-india",
+"https://fanniexhxy184745.aboutyoublog.com/44792159/discover-reliable-drivers-in-india",
+"https://delilahmfvu671741.blognody.com/42517099/locate-reliable-drivers-in-india",
+"https://aliviamxdl735292.activoblog.com/44051124/locate-reliable-drivers-in-india",
+"https://mediajx.com/story25036776/locate-reliable-drivers-in-india",
+"https://bookmark-dofollow.com/story25362259/locate-reliable-drivers-in-india",
+"https://bookmark-template.com/story25653382/discover-reliable-drivers-in-india",
+"https://prbookmarkingwebsites.com/story25492395/find-reliable-drivers-in-india",
+"https://socialmediainuk.com/story23827031/find-reliable-drivers-in-india",
+"https://dirstop.com/story25415197/locate-reliable-drivers-in-india",
+"https://opensocialfactory.com/story22878235/locate-reliable-drivers-in-india",
+"https://ztndz.com/story25424325/find-reliable-drivers-in-india",
+"https://gorillasocialwork.com/story23983269/locate-reliable-drivers-in-india",
+"https://socialrus.com/story21763072/discover-reliable-drivers-in-india",
+"https://bookmarklinking.com/story8292735/discover-reliable-drivers-in-india",
+"https://bookmarks-hit.com/story22823341/locate-reliable-drivers-in-india",
+"https://mediajx.com/story25037431/find-reliable-drivers-in-india",
+"https://bookmark-dofollow.com/story25362927/find-reliable-drivers-in-india",
+"https://bookmark-template.com/story25654049/locate-reliable-drivers-in-india",
+"https://prbookmarkingwebsites.com/story25493050/find-reliable-drivers-in-india",
+"https://socialmediainuk.com/story23827689/discover-reliable-drivers-in-india",
+"https://dirstop.com/story25415860/discover-reliable-drivers-in-india",
+"https://opensocialfactory.com/story22878882/discover-reliable-drivers-in-india",
+"https://ztndz.com/story25424963/locate-reliable-drivers-in-india",
+"https://gorillasocialwork.com/story23983922/locate-reliable-drivers-in-india",
+"https://socialrus.com/story21763704/find-reliable-drivers-in-india",
+"https://bookmarklinking.com/story8293364/locate-reliable-drivers-in-india",
+"https://bookmarks-hit.com/story22823956/discover-reliable-drivers-in-india",
+"https://mediajx.com/story25040861/discover-reliable-drivers-in-india",
+"https://bookmark-dofollow.com/story25366463/locate-reliable-drivers-in-india",
+"https://bookmark-template.com/story25657714/find-reliable-drivers-in-india",
+"https://prbookmarkingwebsites.com/story25496559/discover-reliable-drivers-in-india",
+"https://socialmediainuk.com/story23831295/discover-reliable-drivers-in-india",
+"https://dirstop.com/story25419298/find-reliable-drivers-in-india",
+"https://opensocialfactory.com/story22882334/discover-reliable-drivers-in-india",
+"https://ztndz.com/story25428417/find-reliable-drivers-in-india",
+"https://gorillasocialwork.com/story23987385/find-reliable-drivers-in-india",
+"https://socialrus.com/story21767101/locate-reliable-drivers-in-india",
+"https://bookmarklinking.com/story8296596/find-reliable-drivers-in-india",
+"https://bookmarks-hit.com/story22827070/discover-reliable-drivers-in-india",
+"https://mediajx.com/story25041557/locate-reliable-drivers-in-india",
+"https://bookmark-dofollow.com/story25367174/locate-reliable-drivers-in-india",
+"https://bookmark-template.com/story25658443/find-reliable-drivers-in-india",
+"https://prbookmarkingwebsites.com/story25497268/locate-reliable-drivers-in-india",
+"https://socialmediainuk.com/story23831997/discover-reliable-drivers-in-india",
+"https://dirstop.com/story25420007/locate-reliable-drivers-in-india",
+"https://opensocialfactory.com/story22883048/locate-reliable-drivers-in-india",
+"https://ztndz.com/story25429121/find-reliable-drivers-in-india",
+"https://gorillasocialwork.com/story23988080/locate-reliable-drivers-in-india",
+"https://socialrus.com/story21767794/locate-reliable-drivers-in-india",
+"https://bookmarklinking.com/story8297271/find-reliable-drivers-in-india",
+"https://bookmarks-hit.com/story22827694/locate-reliable-drivers-in-india",
+"https://mediajx.com/story25042195/discover-reliable-drivers-in-india",
+"https://bookmark-dofollow.com/story25367831/find-reliable-drivers-in-india",
+"https://bookmark-template.com/story25659129/discover-reliable-drivers-in-india",
+"https://prbookmarkingwebsites.com/story25497932/locate-reliable-drivers-in-india",
+"https://socialmediainuk.com/story23832665/locate-reliable-drivers-in-india",
+"https://dirstop.com/story25420659/locate-reliable-drivers-in-india",
+"https://opensocialfactory.com/story22883697/find-reliable-drivers-in-india",
+"https://ztndz.com/story25429785/find-reliable-drivers-in-india",
+"https://gorillasocialwork.com/story23988743/discover-reliable-drivers-in-india",
+"https://socialrus.com/story21768438/find-reliable-drivers-in-india",
+"https://bookmarklinking.com/story8297898/discover-reliable-drivers-in-india",
+"https://bookmarks-hit.com/story22828314/locate-reliable-drivers-in-india",
+"https://mediajx.com/story25042853/locate-reliable-drivers-in-india",
+"https://bookmark-dofollow.com/story25368498/discover-reliable-drivers-in-india",
+"https://bookmark-template.com/story25659832/discover-reliable-drivers-in-india",
+"https://prbookmarkingwebsites.com/story25498593/discover-reliable-drivers-in-india",
+"https://socialmediainuk.com/story23833356/find-reliable-drivers-in-india",
+"https://dirstop.com/story25421306/locate-reliable-drivers-in-india",
+"https://opensocialfactory.com/story22884358/discover-reliable-drivers-in-india",
+"https://ztndz.com/story25430463/find-reliable-drivers-in-india",
+"https://gorillasocialwork.com/story23989421/discover-reliable-drivers-in-india",
+"https://socialrus.com/story21769092/locate-reliable-drivers-in-india",
+"https://bookmarklinking.com/story8298517/find-reliable-drivers-in-india",
+"https://bookmarks-hit.com/story22828951/find-reliable-drivers-in-india"
+    ];
+
+    const container = document.getElementById("iframeContainer");
+
+    function renderCards(filter = "") {
+      container.innerHTML = "";
+      const filteredUrls = urls.filter(u => u.toLowerCase().includes(filter.toLowerCase()));
+
+      filteredUrls.forEach(url => {
+        const hostname = new URL(url).hostname;
+        const col = document.createElement("div");
+        col.className = "col-lg-4 col-md-6 col-12 iframe-card";
+        col.innerHTML = `
+          <div class="card h-100 shadow-sm">
+            <iframe src="${url}" loading="lazy"></iframe>
+            <div class="card-body">
+              <h6 class="card-title">${hostname}</h6>
+              <a href="${url}" target="_blank" class="btn btn-chalo btn-sm">Open</a>
+            </div>
+          </div>
+        `;
+        container.appendChild(col);
+      });
+    }
+
+    // Initial render
+    renderCards();
+
+    // Filter handler
+    document.getElementById("filterInput").addEventListener("input", (e) => {
+      renderCards(e.target.value);
+    });
+  </script>
+
+</body>
+</html>
